@@ -1,0 +1,52 @@
+.login {
+  margin: 0 auto;
+  text-align: center;
+}
+
+form {
+  /*
+  ・項目名は左端に揃えたい
+  ・インライン要素の幅を変えるには？→ブロック要素にしてあげる
+  ・IDと入力欄のスペースはどうしてできているの？
+  →Pタグなどのブロック要素に標準でついているmargin
+  ・ブロック要素は幅と高さを指定できて、インライン要素はそれができないのか？
+  →おそらくブロック要素とインライン要素の違いを改めて見返す必要があるのでは？
+  ・リセットCSS
+  ・input要素にfontスタイルを指定してもボタンのフォントが変わるだけで、テキストのフォントは変わらない？
+  ・div role="button"とすることでinputタグの代わりになるのか？
+   */
+}
+
+.label {
+  /* display: blockにしなくてもブロック要素にしたい要素をpタグで囲めば良い？
+  */
+  display: block;
+  width: 153px;
+  text-align: left;
+  padding-left: 10px;
+  margin: 0 auto;
+}
+
+.font {
+  font-family: "Segoe UI", Meiryo, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.item {
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+.error {
+  color: indianred;
+  display: block;
+  text-align: left;
+  margin: 0 auto;
+  width: 300px;
+}
+
+.button {
+  border-radius: 5%;
+  color: #ffffff;
+  background-color: rgb(29, 161, 242);
+  opacity: 0.5;
+}
