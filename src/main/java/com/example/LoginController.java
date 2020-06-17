@@ -17,24 +17,17 @@ public class LoginController {
 
   private final MessageSource source;
 
-  // DIコンテナで管理しているBeanが複数ある場合はどうすればよいか？
-  // 同じ型で依存関係のあるクラスが複数ある場合はどうすればよいか?
   public LoginController(LoginService service, @Qualifier("messageSource") MessageSource source) {
     this.service = service;
     this.source = source;
   }
 
-  // ログイン画面を作りたいならユーザー登録画面も作らないといけないのでは？
   @GetMapping("/login")
   public String login(Model model) {
     model.addAttribute("loginForm", new LoginForm());
     return "login";
   }
 
-  // ログイン画面を作りたいならユーザー登録画面も作らないといけないのでは？
-  // 画面に入力された文字列を連携するためには？→formで連携する？
-  // 入力された文字列が条件に沿うものでなかった場合、エラーを画面に表示するには？
-  // バリデーションチェックの結果を画面に表示するには？→hibernate validatorライブラリをインポートする
   // なぜエラーメッセージの設定をしていないのに日本語でメッセージが表示されるのか？→おそらくエディタの設定で自動的にhibernate validator
   // の日本語メッセージリソースが読み込まれるようになっているのだと思われる。
   // エラーメッセージが表示される順番はどのようにして決まっているのか？
