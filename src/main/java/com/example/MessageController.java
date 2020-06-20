@@ -3,7 +3,6 @@ package com.example;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class MessageController {
 
   // TODO:同じパッケージに属していないとDIされないらしいのだが、どうすればよいのか？
-  // TODO:RestControllerとControllerの違いは？
-  @Autowired
-  private MessageService service;
+  private final MessageService service;
+
+  MessageController(MessageService service) {
+    this.service = service;
+  }
 
   @GetMapping
   public String messages(Model model) {
