@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html
     lang="ja"
     xmlns:th="http://www.thymeleaf.org">
@@ -10,19 +9,18 @@
   <script type="text/javascript" th:src="@{/js/login.js}"></script>
 </head>
 <body>
-<main>
-  <form action="#" class="login" method="post" th:action="@{/login}" th:object="${loginForm}">
-    <!-- エラーがあればエラーメッセージ、ない場合は成功メッセージを出すようにth:ifで調節したい。 -->
-    <!-- エラーは赤枠、成功は緑枠でメッセージを囲むようにしたい。 -->
-    <strong th:text="${error}"></strong>
-    <strong th:text="${success}"></strong>
-    <strong th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="font error">ID Error</strong>
-    <strong th:if="${#fields.hasErrors('pass')}" th:errors="*{pass}" class="font">PASS Error</strong>
-    <p class="item"><strong class="label font">ログインID</strong></p>
-    <input id="id" type="text" th:field="*{id}"/>
-    <p class="item"><strong class="label font">パスワード</strong></p>
-    <input id="pass" type="password" th:field="*{pass}"/>
-    <p><input id="login" type="submit" th:value="ログイン" class="font button"></p>
-  </form>
-</main>
+<form action="#" class="login" method="post" th:action="@{/login}" th:object="${loginForm}">
+  <!-- エラーがあればエラーメッセージ、ない場合は成功メッセージを出すようにth:ifで調節したい。 -->
+  <!-- エラーは赤枠、成功は緑枠でメッセージを囲むようにしたい。 -->
+  <strong th:text="${error}"></strong>
+  <strong th:text="${success}"></strong>
+  <strong th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="font error">ID Error</strong>
+  <strong th:if="${#fields.hasErrors('pass')}" th:errors="*{pass}" class="font">PASS Error</strong>
+  <p class="item"><strong class="label font">ログインID</strong></p>
+  <input id="id" type="text" th:field="*{id}"/>
+  <p class="item"><strong class="label font">パスワード</strong></p>
+  <input id="pass" type="password" th:field="*{pass}"/>
+  <p><input id="login" type="submit" th:value="ログイン" class="font button"></p>
+  <a th:href="@{/signup}">新規ユーザー登録はこちら</a>
+</form>
 </body>

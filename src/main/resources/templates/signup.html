@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html
+    lang="ja"
+    xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>ユーザー登録画面</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}">
+  <script type="text/javascript" th:src="@{/js/signup.js}"></script>
+</head>
+<body>
+<form action="#" class="login" method="post" th:action="@{/signup}" th:object="${signUpForm}">
+  <strong th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="font error">ID Error</strong>
+  <strong th:if="${#fields.hasErrors('pass')}" th:errors="*{pass}" class="font">PASS Error</strong>
+  <p class="item"><strong class="label font">ログインID</strong></p>
+  <input id="id" type="text" maxlength="10" th:field="*{id}"/>
+  <!-- 文字数の最大長はcontrollerから指定するように変更したほうが良いのでは？ -->
+  <p><span id="length"></span></p>
+  <p class="item"><strong class="label font">パスワード</strong></p>
+  <input id="pass" type="password" th:field="*{pass}"/>
+  <p><input id="login" type="submit" th:value="ユーザー登録" class="font button"></p>
+</form>
+</body>
+</html>
