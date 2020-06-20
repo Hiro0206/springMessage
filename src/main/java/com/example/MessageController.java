@@ -9,8 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("/messages")
 public class MessageController {
 
   // TODO:同じパッケージに属していないとDIされないらしいのだが、どうすればよいのか？
@@ -18,7 +20,7 @@ public class MessageController {
   @Autowired
   private MessageService service;
 
-  @GetMapping("/messages")
+  @GetMapping
   public String messages(Model model) {
     model.addAttribute("messageForm", new MessageForm());
 
@@ -28,7 +30,7 @@ public class MessageController {
     return "messages";
   }
 
-  @PostMapping("/messages")
+  @PostMapping
   public String messagesPost(Model model, @Valid MessageForm messageForm, BindingResult bindingResult, HttpServletRequest request) {
     if (bindingResult.hasErrors()) {
       List<Message> messages = service.getRecentMessages(100);
