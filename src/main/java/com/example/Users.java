@@ -14,7 +14,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "users")
-public class Login implements Serializable {
+public class Users implements Serializable {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
