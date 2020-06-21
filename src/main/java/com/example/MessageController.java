@@ -39,7 +39,13 @@ public class MessageController {
       return "messages";
     }
 
-    service.save(new Message(messageForm.getName(), messageForm.getText(), request.getRemoteAddr()));
+    service.save(
+        new Message()
+            .builder()
+            .name(messageForm.getName())
+            .text(messageForm.getText())
+            .remoteAddr(request.getRemoteAddr())
+            .build());
     return "redirect:/messages";
   }
 }

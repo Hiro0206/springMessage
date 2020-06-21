@@ -11,6 +11,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,6 +20,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Table(name = "message")
+@Builder
+@AllArgsConstructor
 public class Message implements Serializable {
 
   @Id
@@ -39,12 +43,6 @@ public class Message implements Serializable {
 
   // JPA requirement
   protected Message() {}
-
-  public Message(String name, String text, String remoteAddr) {
-    this.name = name;
-    this.text = text;
-    this.remoteAddr = remoteAddr;
-  }
 
   @PrePersist
   public void prePersist() {
