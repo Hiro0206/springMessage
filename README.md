@@ -1,4 +1,4 @@
-# メッセージ投稿システム
+# Message Post System
 
-簡単なメッセージアプリをアウトプットの練習として作成しました。
-基本的な機能を搭載していくつもりですが、時々面白い機能も追加していくつもりです。
+implements Message Post System in order to learn how to use Spring and Thymeleaf, especially Spring Security and Thymeleaf Fragment.
+Finally, I want to make like 2ch.
