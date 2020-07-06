@@ -1,5 +1,6 @@
 package com.example;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -8,8 +9,11 @@ public class SignUpService {
 
   private final UsersRepository repository;
 
-  SignUpService(UsersRepository repository) {
+  private final PasswordEncoder passwordEncoder;
+
+  SignUpService(UsersRepository repository, PasswordEncoder passwordEncoder) {
     this.repository = repository;
+    this.passwordEncoder = passwordEncoder;
   }
 
   /**
@@ -22,7 +26,7 @@ public class SignUpService {
   public void createUser(String loginId, String pass) {
     Users user = Users.builder()
         .loginId(loginId)
-        .password(pass)
+        .password(passwordEncoder.encode(pass))
         .build();
     repository.save(user);
   }
