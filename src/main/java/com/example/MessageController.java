@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/messages")
+@RequestMapping("/")
 public class MessageController {
 
   // TODO:同じパッケージに属していないとDIされないらしいのだが、どうすればよいのか？
@@ -22,7 +22,10 @@ public class MessageController {
   }
 
   @GetMapping
-  public String messages(Model model) {
+  public String index() {return "redirect:messages";}
+
+  @GetMapping("messages")
+  public String getMessage(Model model) {
     model.addAttribute("messageForm", new MessageForm());
 
     List<Message> messages = service.getRecentMessages(100);
@@ -31,8 +34,8 @@ public class MessageController {
     return "messages";
   }
 
-  @PostMapping
-  public String messagesPost(Model model, @Valid MessageForm messageForm, BindingResult bindingResult, HttpServletRequest request) {
+  @PostMapping("messages")
+  public String postMessage(Model model, @Valid MessageForm messageForm, BindingResult bindingResult, HttpServletRequest request) {
     if (bindingResult.hasErrors()) {
       List<Message> messages = service.getRecentMessages(100);
       model.addAttribute("messages", messages);
