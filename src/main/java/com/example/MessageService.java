@@ -16,7 +16,7 @@ public class MessageService {
   }
 
   public List<Message> getRecentMessages(Integer n) {
-    return repository.findByOrderByIdDesc(PageRequest.of(2, n));
+    return repository.findByOrderByIdDesc(PageRequest.of(0, n));
   }
 
   public void save(Message message) {
