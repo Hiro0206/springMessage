@@ -2,7 +2,6 @@ package com.example;
 
 import java.util.List;
 import javax.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
@@ -10,8 +9,11 @@ import org.springframework.stereotype.Service;
 @Transactional
 public class MessageService {
 
-  @Autowired
-  private MessageRepository repository;
+  private final MessageRepository repository;
+
+  MessageService(MessageRepository repository) {
+    this.repository = repository;
+  }
 
   public List<Message> getRecentMessages(Integer n) {
     return repository.findByOrderByIdDesc(PageRequest.of(2, n));
